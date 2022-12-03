@@ -52,6 +52,7 @@ void initialize_openxr_macos_editor_module(ModuleInitializationLevel p_level) {
                 GDREGISTER_CLASS(OpenXRActionSet);
                 GDREGISTER_CLASS(OpenXRActionMap);
                 GDREGISTER_CLASS(OpenXRIPBinding);
+                GDREGISTER_CLASS(OpenXRInteractionProfile);
 #ifdef TOOLS_ENABLED
                 EditorNode::add_init_callback(_editor_init);
 #endif
