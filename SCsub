@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+
+Import('env')
+Import("env_modules")
+
+module_env = env_modules.Clone()
+#################################################
+# And include our module source
+module_obj = []
+module_env.Prepend(CPPPATH=["#modules/openxr"])
+module_env.add_source_files(module_obj, "*.cpp")
+module_env.add_source_files(module_obj, "#modules/openxr/action_map/openxr_defs.cpp")
+module_env.add_source_files(module_obj, "#modules/openxr/action_map/openxr_action.cpp")
+module_env.add_source_files(module_obj, "#modules/openxr/action_map/openxr_action_map.cpp")
+module_env.add_source_files(module_obj, "#modules/openxr/action_map/openxr_action_set.cpp")
+module_env.add_source_files(module_obj, "#modules/openxr/action_map/openxr_interaction_profile.cpp")
+
+env.modules_sources += module_obj
+
+if env.editor_build:
+    SConscript("#modules/openxr/editor/SCsub")
